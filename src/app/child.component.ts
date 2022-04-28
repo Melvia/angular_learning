@@ -1,23 +1,24 @@
-import { Input, Component } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
       
 @Component({
     selector: 'child-comp',
-    template: `<p>Имя пользователя: {{userName}}</p>
-              <p>Возраст пользователя: {{userAge}} старушенция</p>`
+    template: `<p>Привет {{name}}</p>`
 })
-export class ChildComponent{ 
-    @Input() userName: string = "";
-     _userAge: number = 0;
+export class ChildComponent implements OnInit, OnChanges { 
+    @Input() name: string = "";
+ 
+    constructor(){ this.log(`constructor`); }
+    ngOnInit() { this.log(`onInit`); }
      
-    @Input()
-    set userAge(age:number) {
-        if(age<0)
-            this._userAge=0;
-        else if(age>100)
-            this._userAge=100;
-        else
-            this._userAge = age;
-  }
-  get userAge() { return this._userAge; }
-
+    ngOnChanges(changes: SimpleChanges) {
+      for (let propName in changes) {
+        let chng = changes[propName];
+        let cur  = JSON.stringify(chng.currentValue);
+        let prev = JSON.stringify(chng.previousValue);
+        this.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+      }
+    }
+    private log(msg: string) {
+        console.log(msg);
+    }
 }
