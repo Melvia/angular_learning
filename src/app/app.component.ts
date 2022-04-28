@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
-      
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
 @Component({
     selector: 'my-app',
-    template: `<div class="info"><child-comp [userName]="name" [userAge]="age"></child-comp>
-                <input type="text" [(ngModel)]="name" />
-                <input type="text" [(ngModel)]="age" /></div>`,
-    styleUrls : ['./app.component.css']
+    template: `<p>Hello Angular 2</p>`
 })
-export class AppComponent { 
-    name:string="Tomфы";
-    age:number = 29;
+export class AppComponent implements OnInit, OnDestroy { 
+    name:string="Tom";
+     
+    constructor(){ this.log(`constructor`); }
+    ngOnInit() { this.log(`onInit`); }
+ 
+    ngOnDestroy() { this.log(`onDestroy`); }
+ 
+    private log(msg: string) {
+        console.log(msg);
+    }
 }
