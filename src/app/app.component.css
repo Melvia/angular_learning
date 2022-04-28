@@ -1,0 +1,29 @@
+h1,
+h2 {
+  color: navy;
+}
+p {
+  font-size: 33px;
+}
+:host {
+  font-family: Verdana;
+  font-size: 20px;
+  color: rgb(1, 157, 174);
+  border-color: blueviolet;
+}
+
+.info {
+  background: url(./foot.jpg);
+  border-color: blueviolet;
+  height: 500px;
+  width: 500px;
+  padding: 100px 30px 10px 30px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.info input {
+  width: 30%;
+}
