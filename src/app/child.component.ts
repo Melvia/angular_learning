@@ -1,23 +1,17 @@
-import { Input, Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
       
 @Component({
     selector: 'child-comp',
-    template: `<p>Имя пользователя: {{userName}}</p>
-              <p>Возраст пользователя: {{userAge}} старушенция</p>`
+    template: `<input [ngModel]="userName" (ngModelChange)="onNameChange($event)" />`
 })
-export class ChildComponent{ 
-    @Input() userName: string = "";
-     _userAge: number = 0;
-     
-    @Input()
-    set userAge(age:number) {
-        if(age<0)
-            this._userAge=0;
-        else if(age>100)
-            this._userAge=100;
-        else
-            this._userAge = age;
-  }
-  get userAge() { return this._userAge; }
 
+export class ChildComponent{ 
+     
+    @Input() userName:string = "";
+    @Output() userNameChange = new EventEmitter<string>();
+    onNameChange(model: string){
+         
+        this.userName = model;
+        this.userNameChange.emit(model);
+    }
 }
