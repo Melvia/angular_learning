@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-      
+       
 @Component({
     selector: 'my-app',
-    template: `<div class="info"><child-comp [userName]="name" [userAge]="age"></child-comp>
-                <input type="text" [(ngModel)]="name" />
-                <input type="text" [(ngModel)]="age" /></div>`,
-    styleUrls : ['./app.component.css']
+    template: `<div class="info"><h1>у кого слишком дофига времени?</h1><h2>Количество кликов: {{clicks}}</h2>
+              <child-comp (onChanged)="onChanged($event)"></child-comp></div>`,
+    styleUrls: ['./app.component.css']    
 })
 export class AppComponent { 
-    name:string="Tomфы";
-    age:number = 29;
+     
+    clicks:number = 0;
+    onChanged(increased:any){
+        increased==true?this.clicks++:this.clicks--;
+    }
 }

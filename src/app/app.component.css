@@ -14,8 +14,9 @@ p {
 
 .info {
   background: url(./foot.jpg);
+  background-position: 40% 20%;
   border-color: blueviolet;
-  height: 500px;
+  height: 700px;
   width: 500px;
   padding: 100px 30px 10px 30px;
   display: flex;
@@ -26,4 +27,9 @@ p {
 
 .info input {
   width: 30%;
+}
+
+.info button {
+  background-color: rgb(226, 156, 43);
+  color: white;
 }
